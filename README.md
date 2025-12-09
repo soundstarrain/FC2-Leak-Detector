@@ -1,11 +1,11 @@
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/80a9f02a029d420a938410c29cbf2b9f)](https://app.codacy.com/gh/FC2-Research-Club/FC2-Leak-Detector/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_grade)
-[![版本](https://img.shields.io/github/v/release/FC2-Research-Club/FC2-Leak-Detector?include_prereleases&style=flat-square)](https://github.com/FC2-Research-Club/FC2-Leak-Detector/releases)
-[![许可证](https://img.shields.io/badge/license-GPL--3.0-green?style=flat-square)](https://github.com/FC2-Research-Club/FC2-Leak-Detector/blob/main/LICENSE)
+[![版本](https://img.shields.io/github/v/release/FC2-Research-Club/FC2-Leak-Detector?include_prereleases&style=flat-square)](https://github.com/soundstarrain/FC2-Leak-Detector/releases)
+[![许可证](https://img.shields.io/badge/license-GPL--3.0-green?style=flat-square)](https://github.com/soundstarrain/FC2-Leak-Detector/blob/main/LICENSE)
 [![Python版本](https://img.shields.io/badge/python-3.8%2B-blue?style=flat-square)](https://www.python.org/)
-[![GitHub Stars](https://img.shields.io/github/stars/FC2-Research-Club/FC2-Leak-Detector?style=flat-square)](https://github.com/FC2-Research-Club/FC2-Leak-Detector/stargazers)
-[![GitHub Forks](https://img.shields.io/github/forks/FC2-Research-Club/FC2-Leak-Detector?style=flat-square)](https://github.com/FC2-Research-Club/FC2-Leak-Detector/network/members)
-[![CI状态](https://img.shields.io/github/actions/workflow/status/FC2-Research-Club/FC2-Leak-Detector/publish.yml?style=flat-square)](https://github.com/FC2-Research-Club/FC2-Leak-Detector/actions)
-[![最后提交](https://img.shields.io/github/last-commit/FC2-Research-Club/FC2-Leak-Detector?style=flat-square)](https://github.com/FC2-Research-Club/FC2-Leak-Detector/commits/main)
+[![GitHub Stars](https://img.shields.io/github/stars/FC2-Research-Club/FC2-Leak-Detector?style=flat-square)](https://github.com/soundstarrain/FC2-Leak-Detector/stargazers)
+[![GitHub Forks](https://img.shields.io/github/forks/FC2-Research-Club/FC2-Leak-Detector?style=flat-square)](https://github.com/soundstarrain/FC2-Leak-Detector/network/members)
+[![CI状态](https://img.shields.io/github/actions/workflow/status/FC2-Research-Club/FC2-Leak-Detector/publish.yml?style=flat-square)](https://github.com/soundstarrain/FC2-Leak-Detector/actions)
+[![最后提交](https://img.shields.io/github/last-commit/FC2-Research-Club/FC2-Leak-Detector?style=flat-square)](https://github.com/soundstarrain/FC2-Leak-Detector/commits/main)
 
 # FC2流出检测器 | FC2 Leak Detector | FC2流出チェッカー
 
@@ -69,13 +69,13 @@ python --version
 选项1: 使用Git克隆
 
 ```bash
-git clone https://github.com/FC2-Research-Club/FC2-Leak-Detector.git
+git clone https://github.com/soundstarrain/FC2-Leak-Detector.git
 cd FC2-Leak-Detector
 ```
 
 选项2: 直接下载发布版本
 
-1. 访问[GitHub Releases页面](https://github.com/FC2-Research-Club/FC2-Leak-Detector/releases)
+1. 访问[GitHub Releases页面](https://github.com/soundstarrain/FC2-Leak-Detector/releases)
 2. 下载最新版本的源代码
 3. 解压下载的文件
 4. 通过命令行进入解压后的目录
@@ -362,13 +362,13 @@ python --version
 Option 1: Using Git
 
 ```bash
-git clone https://github.com/FC2-Research-Club/FC2-Leak-Detector.git
+git clone https://github.com/soundstarrain/FC2-Leak-Detector.git
 cd FC2-Leak-Detector
 ```
 
 Option 2: Direct Download from Releases
 
-1. Visit the [GitHub Releases page](https://github.com/FC2-Research-Club/FC2-Leak-Detector/releases)
+1. Visit the [GitHub Releases page](https://github.com/soundstarrain/FC2-Leak-Detector/releases)
 2. Download the latest version source code 
 3. Extract the downloaded file
 4. Navigate to the extracted directory via command line
@@ -655,13 +655,13 @@ python --version
 オプション1: Gitを使用してクローン
 
 ```bash
-git clone https://github.com/FC2-Research-Club/FC2-Leak-Detector.git
+git clone https://github.com/soundstarrain/FC2-Leak-Detector.git
 cd FC2-Leak-Detector
 ```
 
 オプション2: リリースから直接ダウンロード
 
-1. [GitHubリリースページ](https://github.com/FC2-Research-Club/FC2-Leak-Detector/releases)にアクセス
+1. [GitHubリリースページ](https://github.com/soundstarrain/FC2-Leak-Detector/releases)にアクセス
 2. 最新バージョンのソースコードをダウンロード
 3. ダウンロードしたファイルを解凍
 4. コマンドラインで解凍したディレクトリに移動

@@ -62,10 +62,10 @@ dependencies = [
 ]
 
 [project.urls]
-"Homepage" = "https://github.com/FC2-Research-Club/FC2-Leak-Detector"
-"Bug Tracker" = "https://github.com/FC2-Research-Club/FC2-Leak-Detector/issues"
-"Source Code" = "https://github.com/FC2-Research-Club/FC2-Leak-Detector"
-"Documentation" = "https://github.com/FC2-Research-Club/FC2-Leak-Detector/blob/main/README.md"
+"Homepage" = "https://github.com/soundstarrain/FC2-Leak-Detector"
+"Bug Tracker" = "https://github.com/soundstarrain/FC2-Leak-Detector/issues"
+"Source Code" = "https://github.com/soundstarrain/FC2-Leak-Detector"
+"Documentation" = "https://github.com/soundstarrain/FC2-Leak-Detector/blob/main/README.md"
 
 [tool.flake8]
 max-line-length = 88
