@@ -9,7 +9,7 @@
 
 # FC2流出检测器 | FC2 Leak Detector | FC2流出チェッカー
 
-[简体中文](#简体中文) | [English](#english) | [日本語](#日本語)
+[简体中文](#简体中文) | [English](#english) | [日本語](#日本語) | [繁體中文](#繁體中文)
 
 ## 简体中文
 
@@ -890,4 +890,298 @@ python run.py --clear-cache
 ### Star履歴
 
 [![Star履歴グラフ](https://starchart.cc/FC2-Research-Club/FC2-Leak-Detector.svg)](https://starchart.cc/FC2-Research-Club/FC2-Leak-Detector)
+
+## 繁體中文
+
+### 專案概述
+
+> [!IMPORTANT]
+> **關於資料來源變更與功能受限的說明 (2025.12)**
+> 
+> 受上游資料來源 `fc2ppvdb` 於2025年9月改版影響，本工具目前處於**功能受限**狀態：
+> 
+> 1.  **資料遺失**：由於源站不再公開顯示圖片及部分元資料，**封面預覽等關鍵資訊目前可能無法自動擷取**。
+> 2.  **網路限制**：源站已啟用高強度的 Cloudflare 區域封鎖（Geo-blocking），**中國大陸 IP 幾乎完全無法連線**，且對 VPN/代理的偵測極為嚴格，機房網路的I[...]
+> 3.  **維護狀態**：因為源站受到 FC2 官方的壓力導致網站減少了展示資訊並提高了驗證，舊版「一鍵圖文整合」的使用體驗短期內難以恢復。建議持有**海外��[...]
+> 
+> *我們也在持續關注是否有新的替代資料來源出現。*
+
+FC2 流出檢查器是一款專業的內容狀態分析工具，基於 fc2ppvdb.com 建構。使用者只需提供某位作者的一個具體 FC2 影片 ID，即可快速取得其在 fc2.com 發佈作品的完整狀態報告[...]。
+
+請查看[完整版本更新日誌](CHANGELOG.md)以了解更多細節。
+
+**核心特色：**
+- 強大的統計分析功能，提供直觀且詳細的資料視覺化結果
+- 輕量級命令列介面設計，操作簡單直覺
+- 豐富的自訂設定選項，滿足不同情境下的分析需求
+
+### 主要功能
+
+ **影片流出狀態檢查** - 快速確認影片是否已在其他網站流出  
+ **作者/女優作品分析** - 分析特定作者或女優的所有影片狀態  
+ **批次處理** - 同時處理多個作者或女優 ID  
+ **磁力連結搜尋** - 自動搜尋並擷取影片的磁力連結  
+ **圖片下載** - 自動下載影片縮圖  
+ **詳細報告產生** - 產生完整的分析報告，支援文字與 JSON 格式  
+ **高效快取機制** - 智能快取以減少重複請求  
+ **Jellyfin 元資料支援** - 為已流出的影片產生 Jellyfin 相容的 NFO 檔案與海報圖片
+
+### 安裝指南
+
+#### 系統需求
+
+- Python 3.8 或更高版本
+- 支援的作業系統：Windows、macOS、Linux
+
+#### 安裝步驟
+
+**步驟一：安裝 Python**
+
+請確認系統已安裝 Python 3.8 或更高版本。您可以從[Python 官方網站](https://www.python.org/downloads/)下載並安裝適用於您作業系統的版本。
+
+可透過下列命令驗證 Python 版本：
+```bash
+python --version
+```
+
+**步驟二：取得程式碼**
+
+選項1：使用 Git 克隆
+
+```bash
+git clone https://github.com/soundstarrain/FC2-Leak-Detector.git
+cd FC2-Leak-Detector
+```
+
+選項2：直接下載發行版
+
+1. 前往[GitHub Releases 頁面](https://github.com/soundstarrain/FC2-Leak-Detector/releases)
+2. 下載最新版本的原始碼
+3. 解壓下載的檔案
+4. 透過命令列進入解壓後的目錄
+
+**步驟三：安裝相依套件**
+
+```bash
+pip install -r requirements.txt
+```
+
+### 使用方式
+
+#### 命令列參數
+
+```bash
+python run.py [選項]
+
+選項:
+  -h, --help                顯示說明資訊
+  -w ID, --writer ID        分析作者 ID 的影片
+  -a ID, --actress ID       分析女優 ID 的影片
+  -b IDS, --batch IDS       批次處理多個作者 ID（以逗號分隔）
+  -ba IDS, --batch-actress  批次處理多個女優 ID（以逗號分隔）
+  -v ID, --video ID         透過影片 ID 取得作者的所有影片
+  -t NUM, --threads NUM     設定平行執行緒數（預設值見設定檔）
+  --jellyfin                為已流出的影片產生 Jellyfin 元資料（NFO 檔案與海報）；可單獨使用，會搜尋 48 小時內的分析結果
+  --no-magnet               不擷取磁力連結
+  --no-image                不下載影片縮圖
+  -l LANG, --lang LANG      設定介面語言（支援：zh, en, ja）
+  -c, --config              顯示目前設定
+  -s, --sites               顯示檢查網站清單
+  -e, --extract             擷取熱門作者清單
+  --clear-cache             清除所有快取資料
+```
+
+#### 範例
+
+```bash
+# 分析單一作者的作品
+python run.py -w 5656
+
+# 分析單一女優的作品
+python run.py -a 5711
+
+# 批次分析多位作者
+python run.py -b 5656,3524,4461
+
+# 批次分析多位女優
+python run.py -ba 5711,3986,4219
+
+# 透過影片 ID 取得作者的所有影片
+python run.py -v 1234567
+
+# 使用 10 個執行緒分析作者影片
+python run.py -w 5656 -t 10
+
+# 分析作者影片並產生 Jellyfin 元資料
+python run.py -w 5656 --jellyfin
+
+# 使用最近的分析結果產生 Jellyfin 元資料（無需重新分析）
+python run.py --jellyfin
+
+# 分析女優影片但不擷取磁力連結
+python run.py -a 5711 --no-magnet
+
+# 分析作者影片但不下載縮圖
+python run.py -w 5656 --no-image
+
+# 使用英文介面
+python run.py -l en
+
+# 擷取熱門作者清單
+python run.py -e
+
+# 清除所有快取
+python run.py --clear-cache
+```
+
+#### 進階用法
+
+以下為結合多個參數的進階使用範例：
+
+```bash
+# 使用 20 個執行緒分析作者影片，產生 Jellyfin 元資料，並使用英文介面
+python run.py -w 5656 -t 20 --jellyfin -l en
+
+# 批次分析多位作者，使用最多 50 個執行緒，不下載縮圖但擷取磁力連結，並產生 Jellyfin 元資料
+python run.py -b 5656,3524,4461,7890,6543,2109 -t 50 --no-image --jellyfin
+
+# 分析女優影片，使用 15 個執行緒，不擷取磁力連結，產生 Jellyfin 元資料，並使用日文介面
+python run.py -a 5711 -t 15 --no-magnet --jellyfin -l ja
+
+# 透過影片 ID 找到作者並分析其所有影片，使用 30 個執行緒，並產生 Jellyfin 元資料
+python run.py -v 1234567 -t 30 --jellyfin
+
+# 批次分析多位女優，使用 25 個執行緒，不擷取磁力連結與縮圖，並產生 Jellyfin 元資料
+python run.py -ba 5711,3986,4219,8765,5432 -t 25 --no-magnet --no-image --jellyfin
+
+# 單獨使用 Jellyfin 元資料產生，從最近 48 小時內的分析結果中選擇
+python run.py --jellyfin
+```
+
+> **注意**：本專案預設語言為中文（zh）。若您偏好使用英文或日文介面，只需使用 `-l` 參數一次設定您的首選語言。此設定會儲存在 `i18n/preference.js[...]` 中。
+
+### 設定說明
+
+設定系統已更新為基於類別的設定模式，使用 `config.py` 中的 `Config` 類別管理所有設定項目：
+
+| 設定類別 | 參數 | 說明 | 預設值 |
+|--------|------|------|--------|
+| **網路請求** | max_workers | 最大平行執行緒數 | 30 |
+| | timeout | 請求逾時時間（秒） | 15 |
+| | max_retries | 最大重試次數 | 4 |
+| | page_interval | 分頁請求間隔時間範圍（秒） | (0.5, 1.2) |
+| | request_interval | 一般請求間隔時間範圍（秒） | (0.5, 1.0) |
+| | retry_base | 重試間隔基數 | 2.0 |
+| **快取設定** | cache_ttl | 快取有效期（秒） | 172800 (48 小時) |
+| **儲存路徑** | cache_dir | 作者與女優 ID 快取目錄 | data/id_cache |
+| | image_dir | 影片縮圖儲存目錄 | data/img |
+| | result_dir | 分析結果儲存目錄 | data/results |
+| | magnet_dir | 磁力資訊儲存目錄 | data/magnets |
+| | log_dir | 日誌檔案儲存目錄 | data/logs |
+| **輸出設定** | save_format | 儲存格式 | ["text", "json"] |
+| | report_batch_size | 報告中每批顯示的影片數量 | 100 |
+| **進階設定** | log_level | 日誌等級 | INFO |
+| | enable_proxy | 是否啟用代理 | false |
+| | user_agents | 瀏覽器 User-Agent 輪換列表 | [多種 user agent] |
+
+### 目錄結構
+
+```
+FC2-Leak-Detector/
+├── src/                 # 原始程式碼目錄
+│   ├── checkers/        # 影片檢查模組
+│   ├── writers/         # 作者資訊模組
+│   └── utils/           # 工具模組
+├── data/                # 資料儲存目錄（自動建立）
+│   ├── id_cache/        # ID 快取目錄
+│   ├── results/         # 結果儲存目錄
+│   ├── img/             # 圖片儲存目錄
+│   ├── magnets/         # 磁力快取目錄
+│   └── logs/            # 日誌目錄
+├── i18n/                # 國際化語言檔案
+│   ├── en.json          # 英文語言檔案
+│   ├── ja.json          # 日文語言檔案
+│   └── zh.json          # 中文語言檔案
+├── .github/             # GitHub 設定
+│   └── workflows/       # GitHub 工作流程
+├── logs/                # 根目錄日誌目錄
+├── run.py               # 程式進入點
+├── main.py              # 主程式碼
+├── config.py            # 設定檔
+├── setup.py             # 套件安裝設定
+├── requirements.txt     # 基本相依套件清單
+├── pyproject.toml       # 專案設定檔
+├── .gitignore           # Git 忽略檔案
+├── .editorconfig        # 編輯器設定
+├── .python-version      # Python 版本設定
+├── CHANGELOG.md         # 更新日誌
+├── LICENSE              # 授權檔
+└── README.md            # 文件說明
+```
+
+### 常見問題
+
+#### 如何找到作者 ID 或女優 ID？
+
+女優 ID 可從 fc2ppvdb.com 網站的 URL 找到。例如：
+- 女優頁面 URL: `.../actress/6789` 中的 `6789` 即為女優 ID
+- 作者 ID 因為未在網頁上明文顯示，使用者可以選取任一該作者的 FC2 影片 ID，使用 -v id 的命令列格式直接取得該作者的影片，無需提供具體 ID
+
+#### 關於 Jellyfin 元資料的使用
+
+產生的 Jellyfin 元資料包含：
+- NFO 檔案：包含影片標題、描述、外部連結等資訊
+- 海報圖片：影片縮圖作為海報
+- 佔位 MP4 檔案：**注意：這些為 0 位元組的空檔，無法直接播放**，僅用於在 Jellyfin 顯示影片條目
+- 觀看連結：NFO 檔案中包含 MissAV 與 123AV 的觀看連結，可透過預告片按鈕或外部連結存取
+- 磁力連結：若可用，NFO 檔案中會包含磁力連結，用於下載影片
+
+要觀看影片，您需要點選 Jellyfin 介面中的預告片按鈕以跳轉至線上觀看網站，或使用磁力連結下載影片。
+
+單獨使用 `--jellyfin` 參數時，程式會搜尋最近 48 小時內的分析結果，並讓您選擇一個用於產生元資料。如此可避免重複分析相同作者或女優的影片，便於快速[...]
+
+#### 分析速度很慢該怎麼辦？
+
+- 增加平行執行緒數（使用 `-t` 參數或修改設定檔中的 `max_workers` 值）
+- 減少要分析的影片數量
+- 確保網路連線穩定
+- 停用磁力搜尋與圖片下載（`--no-magnet --no-image` 參數）
+
+#### 為什麼有些影片顯示「檢查失敗」？
+
+檢查失敗可能由下列原因導致：
+- 網路連線問題
+- 檢查網站暫時不可用
+- 請求被目標網站拒絕
+- 影片 ID 格式不正確
+
+#### 如何清除快取？
+
+手動刪除 `data` 目錄下的相關快取資料夾，或使用以下命令：
+
+```bash
+python run.py --clear-cache
+```
+
+### 注意事項
+
+1. 本工具僅供學術研究與個人學習使用，請勿用於任何商業或非法用途
+2. 請勿頻繁大量發送請求，以免 IP 被封鎖
+3. 遵守相關法律法規，尊重內容著作權
+4. 不要分享或散布透過本工具取得的可能侵權內容
+5. **特別提醒：中國大陸使用者需確保網路環境可正常存取國際網際網路，以便連線本工具依賴的各項線上服務**
+
+### 免責聲明
+
+**重要：在使用本工具前請詳閱以下聲明**
+
+本專案為一技術研究工具，僅供學術研究、資料分析與技術學習之用。使用者必須遵守所在司法管轄區之法律法規。本工具不提供、不儲存��[...]
+
+使用者應對自身之行為負責，作者與貢獻者不對使用本工具所引發之任何法律問題或損害負責。本工具僅用於檢查內容狀態，不鼓勵使用者取得或分享��[...]
+
+本專案採用 GNU 通用公共授權條款 v3（GNU GPL v3）發布，您可以自由使用、修改與散佈此軟體，但需遵循 GPL 協議相關規定。詳細資訊請參閱專案根目錄中的授權檔（LICENSE）。
+
+### Star 趨勢
+
+[![Star歷史圖表](https://starchart.cc/FC2-Research-Club/FC2-Leak-Detector.svg)](https://starchart.cc/FC2-Research-Club/FC2-Leak-Detector)
 
